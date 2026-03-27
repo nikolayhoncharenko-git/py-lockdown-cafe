@@ -1,6 +1,5 @@
 import datetime
 
-from typing import Any
 from app import errors
 
 
@@ -11,7 +10,7 @@ class Cafe:
     def __str__(self) -> str:
         return f"{self.name}"
 
-    def visit_cafe(self, visitor: dict) -> Any:
+    def visit_cafe(self, visitor: dict) -> str:
         vaccine = visitor.get("vaccine")
 
         if vaccine is None:
@@ -21,7 +20,6 @@ class Cafe:
 
         if expiration_date < datetime.date.today():
             raise errors.OutdatedVaccineError("Vaccine is outdated.")
-
 
         wearing_a_mask = visitor.get("wearing_a_mask")
 
